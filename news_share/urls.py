@@ -22,5 +22,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     # path('',TemplateView.as_view(template_name="login/index.html")),
     path('',include("login.urls")),
-    path('dashboard',include("dashboard.urls")),
+    path('dashboard/',include("dashboard.urls")),
+    # path('results',include("dashboard.urls")),
 ]

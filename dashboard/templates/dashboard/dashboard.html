@@ -50,7 +50,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link text-light" href="#"
+                  <a class="nav-link text-light" href="{% url 'dashboard' %}"
                     >Home <span class="sr-only">(current)</span></a
                   >
                 </li>
@@ -72,12 +72,14 @@
                   >
                 </li>
               </ul>
-              <form class="form-inline my-2 my-lg-0">
+              <form class="form-inline my-2 my-lg-0" action='{% url "results" %}' method="post">
+                {% csrf_token %}
                 <input
                   class="form-control mr-sm-2"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
+                  name='keywords'
                 />
                 <button
                   class="btn btn-outline-success my-2 my-sm-0"
@@ -114,12 +116,51 @@
             <button class="btn btn-dark btn-lg pl-5 pr-5">Science</button>
           </div>
         </div>
+
         <div
           class="col-6 border p-3 mt-3 ml-3 pb-5"
           style="box-shadow: 5px 3px #888888"
         >
-          <h1 class="text-center">News Feed</h1>
+          <div>
+            <h4 class="text-center">Top 10 Google Search in Canada</h4>
+            {%for x in search%}
+            <div class="alert alert-primary" role="alert">{{x}}</div>
+            {%endfor%}
+            <hr />
+            <h4 class="text-center">Top 10 Google Search in USA</h4>
+            {%for x in search_usa%}
+            <div class="alert alert-primary" role="alert">{{x}}</div>
+            {%endfor%}
+            <hr />
+          </div>
+          {% comment %} this is for others countries top serach {% endcomment %}
+          <div class="form-group">
+            <form
+              method="post"
+              action="dashboard"
+            >
+              {% csrf_token %}
+              <h4>Would you like to search different Countries?</h4>
+              <div class="form-group">
+                <select class="form-control" id="exa" name="country">
+                  <option value=""></option>
+                  <option value="AU">Australia</option>
+                  <option value="JP">Japan</option>
+                  <option value="IN">India</option>
+                </select>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-info"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+                search
+              </button>
+            </form>
+          </div>
         </div>
+
         <div
           class="col-2 border p-3 mt-3 ml-3 pb-5"
           style="box-shadow: 5px 3px #888888"
@@ -135,6 +176,11 @@
           <div class="text-center">
             <a href="#"></a>
           </div>
+        </div>
+      </div>
+    </div>
+    
+    
         </div>
       </div>
     </div>
