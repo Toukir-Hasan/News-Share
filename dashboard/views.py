@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from pytrends.request import TrendReq
 from . import graph
-import matplotlib.pyplot as plt
+
 from GoogleNews import GoogleNews
 @login_required(login_url='/')
 def dashboard(request):
