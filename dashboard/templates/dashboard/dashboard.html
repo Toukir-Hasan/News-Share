@@ -137,7 +137,7 @@
           <div class="form-group">
             <form
               method="post"
-              action="dashboard"
+              action="{% url 'dashboard' %}"
             >
               {% csrf_token %}
               <h4>Would you like to search different Countries?</h4>

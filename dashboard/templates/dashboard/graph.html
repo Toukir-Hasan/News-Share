@@ -24,10 +24,23 @@
 </head>
 <body>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-6">
-                <img src="data:image/png;base64,{{ chart }}">
-                <a  class='btn btn-lg btn-info'href="{% url 'dashboard'%}">Back</a>
+        <div class="row justify-content-center" style="display:flex; align:center;">
+            <div class="col-6" >
+              {% for x in chart%}
+              <div class="card" style="width: 18rem;">
+    
+                <div class="card-body">
+                  <h5 class="card-title">{{x.title}}</h5>
+              
+                  <a href="{{x.link}}" class="btn btn-primary">See The Full News</a>
+                </div>
+              </div>
+              <hr>
+              {%endfor%}
+         
+
+                {% comment %} <img src="data:image/png;base64,{{ chart }}">
+                <a  class='btn btn-lg btn-info'href="{% url 'dashboard'%}">Back</a> {% endcomment %}
             </div>
         </div>
     </div>

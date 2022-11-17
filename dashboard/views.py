@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from pytrends.request import TrendReq
 from . import graph
 import matplotlib.pyplot as plt
+from GoogleNews import GoogleNews
 @login_required(login_url='/')
 def dashboard(request):
     pytrends = TrendReq(hl='en-US')
@@ -26,16 +27,14 @@ def dashboard(request):
 
 @login_required(login_url='/')
 def result(request):
-    pytrends = TrendReq(hl='en-US')
     if request.method=='POST':
-        keywords=[]
-        keywords.append(request.POST['keywords'])
-        pytrends.build_payload(keywords, timeframe='today 5-y',)
-        data=pytrends.interest_over_time()
-        graphh=plt.plot(data)
-        a= graph.get_plot(graphh)
-        # return HttpResponse(keywords)
-        return render(request,'dashboard/graph.html',{'chart':a})
+        a=request.POST['keywords']
+        googlenews = GoogleNews(lang='en')
+        googlenews.search(a)
+        b=googlenews.results()
+        return render(request,'dashboard/graph.html',{'chart':b})
+
+        
        
         
     
