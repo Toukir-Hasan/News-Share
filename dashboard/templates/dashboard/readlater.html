@@ -28,23 +28,18 @@
             <div class="col-6" >
               
                
-              {% for x in chart%}
+              {% for x in read%}
               <div class="card" style="width: 18rem;">
-                <form action="{%url 'read-later' %}" method='post'>
+               
                 {% csrf_token %}
                 <div class="card-body">
                   <h5 class="card-title">{{x.title}}</h5>
               
-                  <a href="{{x.link}}" class="btn btn-primary">See The Full News</a>
-                  <br>
-                  <br>
-                  <input  name="link" id="" hidden value='{{x.link}}'>
-                  <input  name="title" id="" hidden value='{{x.title}}'>
-                  <button name='read' value='read' type ="submit"class='btn btn-danger btn-sm'>Read later</button>
-                  <button type ="submit"class='btn btn-danger btn-sm'>Like</button>
+                  <a href="{{x.url_name}}" class="btn btn-primary">See The Full News</a>
+                  
                 </div>
               </div>
-            </form>
+            
               <hr>
               {%endfor%}
             

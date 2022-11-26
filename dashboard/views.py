@@ -1,10 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from pytrends.request import TrendReq
 from . import graph
+from .models import ReadLater
+from django.contrib.auth.models import User
+from django.urls import reverse
 
 from GoogleNews import GoogleNews
+
 @login_required(login_url='/')
 def dashboard(request):
     pytrends = TrendReq(hl='en-US')
@@ -34,7 +38,28 @@ def result(request):
         b=googlenews.results()
         return render(request,'dashboard/graph.html',{'chart':b})
 
+@login_required(login_url='/')
+def readlater(request):
+    if request.method=="POST" :
+        if request.POST['read']=='read':
+            link=request.POST['link']
+            title= request.POST['title']
+            a=User.objects.get(id=request.user.id)
+            read_later=ReadLater(url_name=link,title=title,name=a)
+            read_later.save()
+            return HttpResponseRedirect(reverse('dashboard'))
+          
+    else:
+    
+        a=request.user.id
+        read_later=ReadLater.objects.filter(name__id=a)
+            # read_later=ReadLater.objects.raw("select * from dashboard_ReadLater where username = 'a' ")    
+        return render(request,'dashboard/readlater.html',{'read':read_later})
+            
         
+   
+
+     
        
         
     

@@ -58,7 +58,7 @@
                   <a class="nav-link text-dark" href="#">Friends</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-light" href="#">Messaage</a>
+                  <a class="nav-link text-light" href="#">Message</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-light" href="#">Invitation</a>
@@ -98,23 +98,31 @@
           style="box-shadow: 5px 3px #888888"
         >
           <div>
-            <h6 class="text-center">News Catagories</h6>
+            <h6 class="text-left">Catagories</h6>
           </div>
-          <div class="text-center">
-            <button class="btn btn-dark btn-lg pl-5 pr-5">Sports</button>
+          
+         
+         <form action="{% url 'results' %}" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <select class="form-control" id="exa" name="keywords">
+              <option value=""></option>
+              <option value="sports">Sports</option>
+              <option value="movies">Movies</option>
+              <option value="business">Business</option>
+              <option value="Technology">Technology</option>
+              <option value="politics">Politics</option>
+              <option value="Fashion">Fashion</option>
+            </select>
           </div>
-          <div class="text-center mt-2">
-            <button class="btn btn-dark btn-lg pl-5 pr-5">Sports</button>
-          </div>
-          <div class="text-center mt-2">
-            <button class="btn btn-dark btn-lg pl-5 pr-5">Music</button>
-          </div>
-          <div class="text-center mt-2">
-            <button class="btn btn-dark btn-lg pl-5 pr-5">movie</button>
-          </div>
-          <div class="text-center mt-2">
-            <button class="btn btn-dark btn-lg pl-5 pr-5">Science</button>
-          </div>
+          <button
+          type="submit"
+          class="btn btn-info"
+       
+        >
+          Search
+        </button>
+         </form>
         </div>
 
         <div
@@ -122,12 +130,12 @@
           style="box-shadow: 5px 3px #888888"
         >
           <div>
-            <h4 class="text-center">Top 10 Google Search in Canada</h4>
+            <h4 class="text-center">Top 10 Google Searches Near Me</h4>
             {%for x in search%}
             <div class="alert alert-primary" role="alert">{{x}}</div>
             {%endfor%}
             <hr />
-            <h4 class="text-center">Top 10 Google Search in USA</h4>
+            <h4 class="text-center"></h4>
             {%for x in search_usa%}
             <div class="alert alert-primary" role="alert">{{x}}</div>
             {%endfor%}
@@ -170,7 +178,7 @@
           </div>
           <hr />
           <div class="text-center">
-            <a href="#">Read Later</a>
+            <a href="{%url 'read-later'%}">Read Later</a>
           </div>
           <hr />
           <div class="text-center">
