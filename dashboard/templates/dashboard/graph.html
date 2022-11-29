@@ -20,16 +20,16 @@
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
     crossorigin="anonymous"
   ></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>News</title>
 </head>
 <body>
-    <div class="container">
-        <div class="row justify-content-center" style="display:flex; align:center;">
+    <div class="wrapper container">
+        <div class="row justify-content-center">
             <div class="col-6" >
-              
-               
               {% for x in chart%}
-              <div class="card" style="width: 18rem;">
+              
+              <div class="card overflow-hidden" style="width: 18rem;">
                 <form action="{%url 'read-later' %}" method='post'>
                 {% csrf_token %}
                 <div class="card-body">
@@ -40,18 +40,20 @@
                   <br>
                   <input  name="link" id="" hidden value='{{x.link}}'>
                   <input  name="title" id="" hidden value='{{x.title}}'>
-                  <button name='read' value='read' type ="submit"class='btn btn-danger btn-sm'>Read later</button>
-                  <button type ="submit"class='btn btn-danger btn-sm'>Like</button>
+                  
+                  <button name='read' value='read' type ="submit"class='btn btn-danger btn-sm fa fa-book'> Read later</button>
+                  <button name='like' value='like' type ="submit"class='btn btn-danger btn-sm fa fa-thumbs-up'> Like</button>
                 </div>
               </div>
             </form>
               <hr>
               {%endfor%}
             
-
+    
                 {% comment %} <img src="data:image/png;base64,{{ chart }}">
-                <a  class='btn btn-lg btn-info'href="{% url 'dashboard'%}">Back</a> {% endcomment %}
+            <a  class='btn btn-lg btn-info'href="{% url 'dashboard'%}">Back</a> {% endcomment %}
             </div>
+
         </div>
     </div>
     

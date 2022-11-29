@@ -17,3 +17,18 @@ class LikedNews(models.Model):
     
     def __str__(self):
         return f'{self.url_name}{self.title}'
+
+
+class Catagory(models.Model):
+    fav1=models.CharField(max_length=300,null=True,blank=True)
+    fav2=models.CharField(max_length=300,null=True,blank=True)
+    fav3=models.CharField(max_length=300,null=True,blank=True)
+    fav4=models.CharField(max_length=300,null=True,blank=True)
+    fav5=models.CharField(max_length=300,null=True,blank=True)
+    name=models.ForeignKey(User,null=False,on_delete=models.CASCADE,db_column="username")
+    
+    def __str__(self):
+        return f'{self.fav1}{self.fav2}{self.fav3}{self.fav4}{self.fav5}'
+
+
+

@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse,HttpResponseRedirect
 from pytrends.request import TrendReq
 from . import graph
-from .models import ReadLater
+from .models import ReadLater,LikedNews,Catagory
 from django.contrib.auth.models import User
 from django.urls import reverse
 
@@ -41,12 +41,19 @@ def result(request):
 @login_required(login_url='/')
 def readlater(request):
     if request.method=="POST" :
-        if request.POST['read']=='read':
+        if request.POST.get('read')=='read':
             link=request.POST['link']
             title= request.POST['title']
             a=User.objects.get(id=request.user.id)
             read_later=ReadLater(url_name=link,title=title,name=a)
             read_later.save()
+            return HttpResponseRedirect(reverse('dashboard'))
+        elif request.POST.get('like')=='like':
+            link=request.POST['link']
+            title= request.POST['title']
+            a=User.objects.get(id=request.user.id)
+            like=LikedNews(url_name=link,title=title,name=a)
+            like.save()
             return HttpResponseRedirect(reverse('dashboard'))
           
     else:
@@ -55,6 +62,18 @@ def readlater(request):
         read_later=ReadLater.objects.filter(name__id=a)
             # read_later=ReadLater.objects.raw("select * from dashboard_ReadLater where username = 'a' ")    
         return render(request,'dashboard/readlater.html',{'read':read_later})
+
+
+@login_required(login_url='/')
+def catagory(request):
+    a=User.objects.get(id=request.user.id)
+    try:
+        find=bool(Catagory.objects.get(name=a))
+        return HttpResponse(find)
+    except:
+        return HttpResponse("jjj")
+    
+       
             
         
    
