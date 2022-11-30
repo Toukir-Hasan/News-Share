@@ -20,11 +20,11 @@ class LikedNews(models.Model):
 
 
 class Catagory(models.Model):
-    fav1=models.CharField(max_length=300,null=True,blank=True)
-    fav2=models.CharField(max_length=300,null=True,blank=True)
-    fav3=models.CharField(max_length=300,null=True,blank=True)
-    fav4=models.CharField(max_length=300,null=True,blank=True)
-    fav5=models.CharField(max_length=300,null=True,blank=True)
+    fav1=models.CharField(max_length=300,default="Nothig")
+    fav2=models.CharField(max_length=300,default="Nothig")
+    fav3=models.CharField(max_length=300,default="Nothig")
+    fav4=models.CharField(max_length=300,default="Nothig")
+    fav5=models.CharField(max_length=300,default="Nothig")
     name=models.ForeignKey(User,null=False,on_delete=models.CASCADE,db_column="username")
     
     def __str__(self):

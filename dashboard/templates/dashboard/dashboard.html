@@ -98,14 +98,14 @@
           style="box-shadow: 5px 3px #888888"
         >
           <div>
-            <h6 class="text-left">Catagories</h6>
+            <h6 class="text-left">Catagory1 <a href="{% url 'results_1' cat.fav1 %}"class='btn btn-sm btn-primary'>{{cat.fav1}}</a></h6>
           </div>
           
-         <a href="{%url 'catagory'%}"> fav</a>
-         <form action="{% url 'results' %}" method="post">
+         {% comment %} <a href="{%url 'catagory'%}"> fav</a> {% endcomment %}
+         <form action="{% url 'catagory' %}" method="post">
           {% csrf_token %}
           <div class="form-group">
-            <select class="form-control" id="exa" name="keywords">
+            <select class="form-control" id="exa" name="fav1">
               <option value=""></option>
               <option value="sports">Sports</option>
               <option value="movies">Movies</option>
@@ -115,12 +115,72 @@
               <option value="Fashion">Fashion</option>
             </select>
           </div>
+          <div>
+            <h6 class="text-left">Catagory2 <a href="{% url 'results_1' cat.fav2 %}"class='btn btn-sm btn-primary'>{{cat.fav2}}</a></h6>
+          </div>
+          <div class="form-group">
+            <select class="form-control" id="exa" name="fav2">
+              <option value=""></option>
+              <option value="sports">Sports</option>
+              <option value="movies">Movies</option>
+              <option value="business">Business</option>
+              <option value="Technology">Technology</option>
+              <option value="politics">Politics</option>
+              <option value="Fashion">Fashion</option>
+            </select>
+          </div>
+
+          <div>
+            <h6 class="text-left">Catagory3 <a href= "{% url 'results_1' cat.fav3 %}" class='btn btn-sm btn-primary'>{{cat.fav3}}</a></h6>
+          </div>
+          <div class="form-group">
+            <select class="form-control" id="exa" name="fav3">
+              <option value=""></option>
+              <option value="sports">Sports</option>
+              <option value="movies">Movies</option>
+              <option value="business">Business</option>
+              <option value="Technology">Technology</option>
+              <option value="politics">Politics</option>
+              <option value="Fashion">Fashion</option>
+            </select>
+          </div>
+
+          <div>
+            <h6 class="text-left">Catagory4 <a href="{% url 'results_1' cat.fav4 %}" class='btn btn-sm btn-primary'>{{cat.fav4}}</a></h6>
+          </div>
+          <div class="form-group">
+            <select class="form-control" id="exa" name="fav4">
+              <option value=""></option>
+              <option value="sports">Sports</option>
+              <option value="movies">Movies</option>
+              <option value="business">Business</option>
+              <option value="Technology">Technology</option>
+              <option value="politics">Politics</option>
+              <option value="Fashion">Fashion</option>
+            </select>
+          </div>
+
+          <div>
+            <h6 class="text-left">Catagory5 <a href= "{% url 'results_1' cat.fav5 %}" class='btn btn-sm btn-primary'>{{cat.fav5}}</a></h6>
+          </div>
+          <div class="form-group">
+            <select class="form-control" id="exa" name="fav5">
+              <option value=""></option>
+              <option value="sports">Sports</option>
+              <option value="movies">Movies</option>
+              <option value="business">Business</option>
+              <option value="Technology">Technology</option>
+              <option value="politics">Politics</option>
+              <option value="Fashion">Fashion</option>
+            </select>
+          </div>
+
           <button
           type="submit"
           class="btn btn-info"
        
         >
-          Search
+          Submit
         </button>
          </form>
         </div>
