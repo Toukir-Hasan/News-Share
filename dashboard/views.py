@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse,HttpResponseRedirect
 from pytrends.request import TrendReq
 from . import graph
-from .models import ReadLater,LikedNews,Catagory
+from .models import ReadLater,LikedNews,Catagory,Following
 from django.contrib.auth.models import User
 from django.urls import reverse
 
@@ -48,12 +48,15 @@ def result(request):
         return render(request,'dashboard/graph.html',{'chart':b})
     
 @login_required(login_url='/')
-def result_1(request,cat):
-    a=cat
-    googlenews = GoogleNews(lang='en')
-    googlenews.search(a)
-    b=googlenews.results()
-    return render(request,'dashboard/graph.html',{'chart':b})
+def result_1(request):
+    if request.method=="POST":
+         a=request.POST.get('fav1')
+         googlenews = GoogleNews(lang='en')
+         googlenews.search(a)
+         b=googlenews.results()
+         return render(request,'dashboard/graph.html',{'chart':b})
+        
+   
        
 
 @login_required(login_url='/')
@@ -122,6 +125,52 @@ def catagory(request):
             cat.save()
             find_1=Catagory.objects.get(name=a)
             return HttpResponseRedirect(reverse('dashboard'))
+
+
+
+@login_required(login_url='/')
+def up_user(request):
+    info=User.objects.get(id=request.user.id)
+    name=info.username  
+    email=info.email
+    if request.method=="POST":
+        if len(request.POST['email'])!=0:
+            email=request.POST['email']
+        if len(request.POST['name'])!=0:
+            name=request.POST['name']
+        info.username=name
+        info.email=email
+        info.save()
+        return HttpResponseRedirect (reverse('dashboard'))
+    return render (request,'dashboard/user.html',{'info':info})
+
+
+@login_required(login_url='/')
+def invitation(request):
+    if request.method=="POST":
+        email=request.POST['email']
+        find=User.objects.get(email=email)
+        return render (request,'dashboard/follow.html',{'follow':find})
+    return render (request,'dashboard/invitation.html')
+
+
+@login_required(login_url='/')
+def follow(request):
+    if request.method=="POST":
+        a=User.objects.get(id=request.user.id)
+        name=request.POST['name']
+        email=request.POST['email']
+        new_following=Following(name=name,email=email,user=a)
+        new_following.save()
+        return HttpResponseRedirect(reverse('dashboard'))
+    else:
+        a=User.objects.get(id=request.user.id)
+        following=Following.objects.filter(user=a)
+        return render(request,'dashboard/following.html',{'following':following})
+        
+        
+   
+    
             
     
        

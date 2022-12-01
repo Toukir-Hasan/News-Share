@@ -31,4 +31,9 @@ class Catagory(models.Model):
         return f'{self.fav1}{self.fav2}{self.fav3}{self.fav4}{self.fav5}'
 
 
-
+class Following(models.Model):
+    name=models.CharField(max_length=300)
+    email=models.CharField(max_length=300)
+    user=models.ForeignKey(User,null=False,on_delete=models.CASCADE,db_column="username")
+    def __str__(self):
+        return f'{self.name}'
