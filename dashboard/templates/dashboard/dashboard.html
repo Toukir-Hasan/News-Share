@@ -118,18 +118,18 @@
           <hr>
           
           
-         {% comment %} <a href="{%url 'category'%}"> fav</a> {% endcomment %}
-         <form action="{% url 'category' %}" method="post">
+         {% comment %} <a href="{%url 'catagory'%}"> fav</a> {% endcomment %}
+         <form action="{% url 'catagory' %}" method="post">
           {% csrf_token %}
           <div class="form-group">
             <select class="form-control" id="exa" name="fav1">
               <option value=""></option>
-              <option value="sports">Sports</option>
-              <option value="movies">Movies</option>
-              <option value="business">Business</option>
-              <option value="Music">Music</option>
-              <option value="politics">Politics</option>
-              <option value="Weather">Weather</option>
+              <option value="Sports">Sports</option>
+              <option value="Movies">Movies</option>
+              <option value="Business">Business</option>
+              <option value="Technology">Technology</option>
+              <option value="Politics">Politics</option>
+              <option value="Fashion">Fashion</option>
             </select>
           </div>
           <div>
@@ -138,12 +138,12 @@
           <div class="form-group">
             <select class="form-control" id="exa" name="fav2">
               <option value=""></option>
-              <option value="sports">Sports</option>
-              <option value="movies">Movies</option>
-              <option value="business">Business</option>
-              <option value="Music">Music</option>
-              <option value="politics">Politics</option>
-              <option value="Weather">Weather</option>
+              <option value="Sports">Sports</option>
+              <option value="Movies">Movies</option>
+              <option value="Business">Business</option>
+              <option value="Technology">Technology</option>
+              <option value="Politics">Politics</option>
+              <option value="Fashion">Fashion</option>
             </select>
           </div>
 
@@ -156,9 +156,9 @@
               <option value="sports">Sports</option>
               <option value="movies">Movies</option>
               <option value="business">Business</option>
-              <option value="Music">Music</option>
+              <option value="Technology">Technology</option>
               <option value="politics">Politics</option>
-              <option value="Weather">Weather</option>
+              <option value="Fashion">Fashion</option>
             </select>
           </div>
 
@@ -171,9 +171,9 @@
               <option value="sports">Sports</option>
               <option value="movies">Movies</option>
               <option value="business">Business</option>
-              <option value="Music">Music</option>
+              <option value="Technology">Technology</option>
               <option value="politics">Politics</option>
-              <option value="Weather">Weather</option>
+              <option value="Fashion">Fashion</option>
             </select>
           </div>
 
@@ -186,9 +186,9 @@
               <option value="sports">Sports</option>
               <option value="movies">Movies</option>
               <option value="business">Business</option>
-              <option value="Music">Music</option>
+              <option value="Technology">Technology</option>
               <option value="politics">Politics</option>
-              <option value="weather">Weather</option>
+              <option value="Fashion">Fashion</option>
             </select>
           </div>
           <div>
@@ -196,7 +196,7 @@
           </div>
 
           <button
-          type="Submit"
+          type="submit"
           class="btn btn-info"
        
         >
