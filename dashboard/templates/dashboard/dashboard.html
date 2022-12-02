@@ -101,25 +101,25 @@
           style="box-shadow: 5px 3px #888888"
         >
           <div>
-            <h6 class="text-left">Catagory1 <form action="{%url 'results_1' %}" method="post">{%csrf_token%}<input hidden name="fav1" value="{{cat.fav1}}"> <button type="submit" class='btn btn-primary btn-sm'>{{cat.fav1}}</button></form></h6>
+            <h6 class="text-left">Category1 <form action="{%url 'results_1' %}" method="post">{%csrf_token%}<input hidden name="fav1" value="{{cat.fav1}}"> <button type="submit" class='btn btn-primary btn-sm'>{{cat.fav1}}</button></form></h6>
           </div>
           <div>
-            <h6 class="text-left">Catagory2<form action="{%url 'results_1' %}" method="post" id="ok">{%csrf_token%}<input hidden name="fav1" value="{{cat.fav2}}"> <button type="submit" class='btn btn-primary btn-sm'>{{cat.fav2}}</button></form></h6>
+            <h6 class="text-left">Category2<form action="{%url 'results_1' %}" method="post" id="ok">{%csrf_token%}<input hidden name="fav1" value="{{cat.fav2}}"> <button type="submit" class='btn btn-primary btn-sm'>{{cat.fav2}}</button></form></h6>
           </div>
           <div>
-            <h6 class="text-left">Catagory3<form action="{%url 'results_1' %}" method="post" id="ok">{%csrf_token%}<input hidden name="fav1" value="{{cat.fav3}}"> <button type="submit" class='btn btn-primary btn-sm'>{{cat.fav3}}</button></form></h6>
+            <h6 class="text-left">Category3<form action="{%url 'results_1' %}" method="post" id="ok">{%csrf_token%}<input hidden name="fav1" value="{{cat.fav3}}"> <button type="submit" class='btn btn-primary btn-sm'>{{cat.fav3}}</button></form></h6>
           </div>
           <div>
-            <h6 class="text-left">Catagory4<form action="{%url 'results_1' %}" method="post" id="ok">{%csrf_token%}<input hidden name="fav1" value="{{cat.fav4}}"> <button type="submit" class='btn btn-primary btn-sm'>{{cat.fav4}}</button></form></h6>
+            <h6 class="text-left">Category4<form action="{%url 'results_1' %}" method="post" id="ok">{%csrf_token%}<input hidden name="fav1" value="{{cat.fav4}}"> <button type="submit" class='btn btn-primary btn-sm'>{{cat.fav4}}</button></form></h6>
           </div>
           <div>
-            <h6 class="text-left">Catagory5<form action="{%url 'results_1' %}" method="post" id="ok">{%csrf_token%}<input hidden name="fav1" value="{{cat.fav5}}"> <button type="submit" class='btn btn-primary btn-sm'>{{cat.fav5}}</button></form></h6>
+            <h6 class="text-left">Category5<form action="{%url 'results_1' %}" method="post" id="ok">{%csrf_token%}<input hidden name="fav1" value="{{cat.fav5}}"> <button type="submit" class='btn btn-primary btn-sm'>{{cat.fav5}}</button></form></h6>
           </div>
           <hr>
           
           
-         {% comment %} <a href="{%url 'catagory'%}"> fav</a> {% endcomment %}
-         <form action="{% url 'catagory' %}" method="post">
+         {% comment %} <a href="{%url 'category'%}"> fav</a> {% endcomment %}
+         <form action="{% url 'category' %}" method="post">
           {% csrf_token %}
           <div class="form-group">
             <select class="form-control" id="exa" name="fav1">
@@ -127,13 +127,13 @@
               <option value="sports">Sports</option>
               <option value="movies">Movies</option>
               <option value="business">Business</option>
-              <option value="Technology">Technology</option>
+              <option value="Music">Music</option>
               <option value="politics">Politics</option>
-              <option value="Fashion">Fashion</option>
+              <option value="Weather">Weather</option>
             </select>
           </div>
           <div>
-            <h6 class="text-left">Catagory1  </h6>
+            <h6 class="text-left">Category1  </h6>
           </div>
           <div class="form-group">
             <select class="form-control" id="exa" name="fav2">
@@ -141,14 +141,14 @@
               <option value="sports">Sports</option>
               <option value="movies">Movies</option>
               <option value="business">Business</option>
-              <option value="Technology">Technology</option>
+              <option value="Music">Music</option>
               <option value="politics">Politics</option>
-              <option value="Fashion">Fashion</option>
+              <option value="Weather">Weather</option>
             </select>
           </div>
 
           <div>
-            <h6 class="text-left">Catagory2 </h6>
+            <h6 class="text-left">Category2 </h6>
           </div>
           <div class="form-group">
             <select class="form-control" id="exa" name="fav3">
@@ -156,14 +156,14 @@
               <option value="sports">Sports</option>
               <option value="movies">Movies</option>
               <option value="business">Business</option>
-              <option value="Technology">Technology</option>
+              <option value="Music">Music</option>
               <option value="politics">Politics</option>
-              <option value="Fashion">Fashion</option>
+              <option value="Weather">Weather</option>
             </select>
           </div>
 
           <div>
-            <h6 class="text-left">Catagory3 </h6>
+            <h6 class="text-left">Category3 </h6>
           </div>
           <div class="form-group">
             <select class="form-control" id="exa" name="fav4">
@@ -171,14 +171,14 @@
               <option value="sports">Sports</option>
               <option value="movies">Movies</option>
               <option value="business">Business</option>
-              <option value="Technology">Technology</option>
+              <option value="Music">Music</option>
               <option value="politics">Politics</option>
-              <option value="Fashion">Fashion</option>
+              <option value="Weather">Weather</option>
             </select>
           </div>
 
           <div>
-            <h6 class="text-left">Catagory4 </h6>
+            <h6 class="text-left">Category4 </h6>
           </div>
           <div class="form-group">
             <select class="form-control" id="exa" name="fav5">
@@ -186,17 +186,17 @@
               <option value="sports">Sports</option>
               <option value="movies">Movies</option>
               <option value="business">Business</option>
-              <option value="Technology">Technology</option>
+              <option value="Music">Music</option>
               <option value="politics">Politics</option>
-              <option value="Fashion">Fashion</option>
+              <option value="weather">Weather</option>
             </select>
           </div>
           <div>
-            <h6 class="text-left">Catagory5 </h6>
+            <h6 class="text-left">Category5 </h6>
           </div>
 
           <button
-          type="submit"
+          type="Submit"
           class="btn btn-info"
        
         >
@@ -258,7 +258,7 @@
           </div>
           <hr />
           <div class="text-center">
-            <a href="{%url 'read-later'%}">Read Later</a>
+            <a href="{%url 'read-later'%}">Watch List</a>
           </div>
           <hr />
           <div class="text-center">
